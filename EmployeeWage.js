@@ -88,6 +88,27 @@ console.log("Daily wage map:")
 for( let[key,value] of dailyWageMap){
     console.log(key+":"+value)
 }
+console.log()
 
+//UC9A: calculate total working hours using map
+const totalWorkingHourUsingMap = Array.from(dailyHourMap.values()).reduce(sum,0);
+console.log("Total working hours using its map: "+totalWorkingHourUsingMap)
+
+//UC9B: show full-working days, part-working days and no-working days
+let nonWorkingDays = new Array()
+let fullWorkingDays = new Array()
+let partWorkingDays = new Array()
+dailyHourMap.forEach((value,key,map)=>{
+    if(value == 8)
+        fullWorkingDays.push(key)
+    else if(value == 4)
+        partWorkingDays.push(key)
+    else
+        nonWorkingDays.push(key)
+})
+//UC10: show full working days, part and non working days
+console.log("Full working days: "+fullWorkingDays)
+console.log("Part working days: "+partWorkingDays)
+console.log("Non working days: "+nonWorkingDays)
 
 
