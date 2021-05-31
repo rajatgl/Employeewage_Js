@@ -57,6 +57,7 @@ for(let day =0; day < NUMBER_OF_WORKING_DAYS; day++){
     //UC6
     dailyWageArray.push(dailySalary)
 
+    //U8: daily wage and hour maps
     dailyHourMap.set(day,dailyHour)
     dailyWageMap.set(day,dailySalary)
 
@@ -65,13 +66,16 @@ for(let day =0; day < NUMBER_OF_WORKING_DAYS; day++){
 
 //const totalWage = totalWorkingHour*WAGE_PER_HR
 //UC7: array reduce
-const totalWage = dailyWageArray.reduce((accumulator, element) => {
-    return accumulator + element;
-  }, 0);
+const sum = (accumulator, element) => { return accumulator + element;}
+const totalWage = dailyWageArray.reduce(sum, 0);
+
+//UC8: calculating total wage using  map
+const totalWageUsingMap = Array.from(dailyWageMap.values()).reduce(sum,0)
 
 console.log("Number of days attended: "+attendenceCount)
 console.log("Total working hours: "+totalWorkingHour)
 console.log("Total wage: "+totalWage)
+console.log("Total wage using map: "+totalWageUsingMap)
 console.log("Daily working hours: "+dailyHourArray)
 console.log("Daily salary : "+dailyWageArray)
 console.log()
