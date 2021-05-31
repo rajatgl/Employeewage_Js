@@ -34,6 +34,8 @@ var workingHour = function workingHours(){
     }
 }
 var workHours = workingHour();
+
+//UC3
 var empWage =workHours*WAGE_PER_HR;
 console.log("Employee Hour: "+workHours);
 console.log("Wage: "+empWage)
@@ -47,27 +49,41 @@ var dailyWageMap = new Map()
 
 const NUMBER_OF_WORKING_DAYS = 20
 for(let day =0; day < NUMBER_OF_WORKING_DAYS; day++){
+
     let dailyHour = workingHour()
     let dailySalary = WAGE_PER_HR*dailyHour
+    //UC5
     dailyHourArray.push(dailyHour)
+    //UC6
     dailyWageArray.push(dailySalary)
+
     dailyHourMap.set(day,dailyHour)
+    dailyWageMap.set(day,dailySalary)
+
     totalWorkingHour += dailyHour
 }
 
-var totalWage = totalWorkingHour*WAGE_PER_HR
+//const totalWage = totalWorkingHour*WAGE_PER_HR
+//UC7: array reduce
+const totalWage = dailyWageArray.reduce((accumulator, element) => {
+    return accumulator + element;
+  }, 0);
 
 console.log("Number of days attended: "+attendenceCount)
 console.log("Total working hours: "+totalWorkingHour)
 console.log("Total wage: "+totalWage)
 console.log("Daily working hours: "+dailyHourArray)
 console.log("Daily salary : "+dailyWageArray)
+console.log()
 console.log("Daily hour map:")
 for( let[key,value] of dailyHourMap){
-    console.log(key+":"+value+"\t")
+    console.log(key+":"+value)
 }
-//console.log("Daily wage map: "+dailyWageMap)
-//console.log("Daily hours map: "+dailyHourMap)
+console.log()
+console.log("Daily wage map:")
+for( let[key,value] of dailyWageMap){
+    console.log(key+":"+value)
+}
 
 
 
